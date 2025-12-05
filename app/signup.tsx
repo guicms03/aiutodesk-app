@@ -11,31 +11,38 @@ import {
 import { useRouter } from "expo-router";
 import { useAuth } from "@/store/auth";
 
-export default function LoginScreen() {
+export default function SignupScreen() {
   const router = useRouter();
   const login = useAuth((state) => state.login);
 
+  const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [erro, setErro] = useState("");
 
-  function handleLogin() {
+  function handleSignup() {
     setErro("");
 
-    if (!email || !senha) {
-      setErro("Preencha e-mail e senha para continuar.");
+    if (!nome || !email || !senha) {
+      setErro("Preencha nome, e-mail e senha para continuar.");
       return;
     }
 
-    // 🔹 Login FAKE — trocar ao conectar com o backend
-    const fakeToken = "TOKEN_FAKE_AIUTODESK";
+    // 🔹 Por enquanto é um cadastro FAKE.
+    // Depois trocamos para chamar a API real de sign up e login.
+    const fakeToken = "TOKEN_FAKE_AIUTODESK_SIGNUP";
     const fakeUser = {
-      nome: "Usuário AIUTODESK",
+      nome,
       email,
     };
 
+    // Faz login automático após criar conta
     login(fakeToken, fakeUser);
     router.replace("/(tabs)");
+  }
+
+  function handleVoltarLogin() {
+    router.replace("/login");
   }
 
   return (
@@ -44,8 +51,15 @@ export default function LoginScreen() {
       behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
       <View style={styles.inner}>
-        <Text style={styles.title}>Bem-vindo ao AIUTODESK</Text>
-        <Text style={styles.subtitle}>Faça login para continuar</Text>
+        <Text style={styles.title}>Criar conta</Text>
+        <Text style={styles.subtitle}>Cadastre-se para acessar o AIUTODESK</Text>
+
+        <TextInput
+          style={styles.input}
+          placeholder="Nome completo"
+          value={nome}
+          onChangeText={setNome}
+        />
 
         <TextInput
           style={styles.input}
@@ -66,12 +80,12 @@ export default function LoginScreen() {
 
         {erro ? <Text style={styles.error}>{erro}</Text> : null}
 
-        <TouchableOpacity style={styles.button} onPress={handleLogin}>
-          <Text style={styles.buttonText}>Entrar</Text>
+        <TouchableOpacity style={styles.button} onPress={handleSignup}>
+          <Text style={styles.buttonText}>Criar conta</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => router.replace("/signup")}>
-          <Text style={styles.link}>Criar conta</Text>
+        <TouchableOpacity onPress={handleVoltarLogin}>
+          <Text style={styles.link}>Já tenho conta – voltar ao login</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
@@ -107,7 +121,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   button: {
-    backgroundColor: "#7C3AED", // ROXO PADRÃO
+    backgroundColor: "#7C3AED",
     padding: 14,
     borderRadius: 8,
     alignItems: "center",

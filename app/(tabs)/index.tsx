@@ -1,99 +1,162 @@
-import { View, Text, StyleSheet } from 'react-native';
-import { Button } from 'react-native-paper';
-import { Link } from 'expo-router';
-import { useAuthStore } from '../../store/useAuthStore';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
+import { useRouter } from "expo-router";
+import { useAuth } from "@/store/auth";
 
 export default function HomeScreen() {
-  const { user, isAuthenticated, login, logout } = useAuthStore();
+  const router = useRouter();
 
-  const handleFakeLogin = () => {
-    login(
-      {
-        name: 'Carlos Borba',
-        email: 'carlinhosborba@example.com',
-      },
-      'fake-token-123',
-    );
-  };
+  const token = useAuth((state) => state.token);
+  const user = useAuth((state) => state.user);
+  const logout = useAuth((state) => state.logout);
+
+  function handleLogout() {
+    logout();
+    router.replace("/login");
+  }
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>AIUTODESK</Text>
-      <Text style={styles.subtitle}>Bem-vindo ao app da equipe!</Text>
-
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Estado de autenticação (Zustand)</Text>
-        {isAuthenticated && user ? (
-          <Text style={styles.infoText}>
-            Usuário logado: <Text style={styles.bold}>{user.name}</Text>
+    <ScrollView contentContainerStyle={styles.container}>
+      {/* Topo: estado de autenticação */}
+      <View style={styles.authBox}>
+        <Text style={styles.authTitle}>Estado de autenticação (Zustand)</Text>
+        {token && user ? (
+          <Text style={styles.authText}>
+            Usuário logado:{" "}
+            <Text style={styles.authStrong}>{user.nome}</Text>
+            {"\n"}
+            <Text style={styles.authEmail}>{user.email}</Text>
           </Text>
         ) : (
-          <Text style={styles.infoText}>Nenhum usuário logado.</Text>
+          <Text style={styles.authText}>Nenhum usuário logado.</Text>
         )}
 
-        <View style={styles.row}>
-          <Button mode="contained" onPress={handleFakeLogin}>
-            Login de teste
-          </Button>
-          <Button mode="outlined" onPress={logout}>
-            Logout
-          </Button>
+        <View style={styles.authButtonsRow}>
+          {!token && (
+            <TouchableOpacity
+              style={[styles.smallButton, styles.secondaryButton]}
+              onPress={() => router.replace("/login")}
+            >
+              <Text style={styles.smallButtonText}>Ir para Login</Text>
+            </TouchableOpacity>
+          )}
+
+          {token && (
+            <TouchableOpacity
+              style={[styles.smallButton, styles.logoutButton]}
+              onPress={handleLogout}
+            >
+              <Text style={styles.smallButtonText}>Logout</Text>
+            </TouchableOpacity>
+          )}
         </View>
       </View>
 
-      <View style={styles.buttons}>
-        <Link href="/sobre" asChild>
-          <Button mode="contained">Sobre o Projeto</Button>
-        </Link>
-
-        <Link href="/equipe" asChild>
-          <Button mode="contained">Equipe</Button>
-        </Link>
+      {/* Centro: título e descrição */}
+      <View style={styles.centerBox}>
+        <Text style={styles.title}>AIUTODESK</Text>
+        <Text style={styles.subtitle}>Bem-vindo ao app da equipe!</Text>
       </View>
-    </View>
+
+      {/* Botões principais */}
+      <View style={styles.buttonsBox}>
+        <TouchableOpacity
+          style={styles.mainButton}
+          onPress={() => router.push("/sobre")}
+        >
+          <Text style={styles.mainButtonText}>Sobre o Projeto</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.mainButton}
+          onPress={() => router.push("/equipe")}
+        >
+          <Text style={styles.mainButtonText}>Equipe</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
-    gap: 16,
+    padding: 24,
+    paddingTop: 40,
+    backgroundColor: "#f5f5f5",
+    flexGrow: 1,
   },
-  title: {
-    fontSize: 32,
-    fontWeight: 'bold',
+  authBox: {
+    backgroundColor: "#ffffff",
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 24,
+    borderWidth: 1,
+    borderColor: "#e5e7eb",
   },
-  subtitle: {
-    fontSize: 18,
-    textAlign: 'center',
-  },
-  section: {
-    marginTop: 16,
-    width: '100%',
-    gap: 8,
-  },
-  sectionTitle: {
-    fontSize: 16,
-    fontWeight: '600',
-  },
-  infoText: {
+  authTitle: {
+    fontWeight: "bold",
+    marginBottom: 8,
     fontSize: 14,
   },
-  bold: {
-    fontWeight: '700',
+  authText: {
+    fontSize: 14,
+    color: "#444",
   },
-  row: {
-    marginTop: 8,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+  authStrong: {
+    fontWeight: "bold",
+  },
+  authEmail: {
+    fontSize: 13,
+    color: "#666",
+  },
+  authButtonsRow: {
+    flexDirection: "row",
+    marginTop: 12,
     gap: 8,
   },
-  buttons: {
-    marginTop: 24,
-    width: '100%',
-    gap: 10,
+  smallButton: {
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 999,
+  },
+  secondaryButton: {
+    backgroundColor: "#3b82f6",
+  },
+  logoutButton: {
+    backgroundColor: "#ef4444",
+  },
+  smallButtonText: {
+    color: "#fff",
+    fontWeight: "600",
+    fontSize: 13,
+    textAlign: "center",
+  },
+  centerBox: {
+    alignItems: "center",
+    marginBottom: 24,
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: "bold",
+    letterSpacing: 1,
+    marginBottom: 4,
+  },
+  subtitle: {
+    fontSize: 16,
+    color: "#555",
+  },
+  buttonsBox: {
+    gap: 12,
+  },
+  mainButton: {
+    backgroundColor: "#7C3AED",
+    paddingVertical: 14,
+    borderRadius: 999,
+    alignItems: "center",
+  },
+  mainButtonText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "600",
+    textTransform: "uppercase",
   },
 });

@@ -8,28 +8,28 @@ export default function GuilhermeScreen() {
       <Card style={styles.card}>
         <Card.Title
           title="Guilherme Martins"
-          subtitle="Integrante da equipe AIUTODESK"
+          subtitle="Membro da equipe AIUTODESK"
           left={(props) => <Avatar.Text {...props} label="GM" />}
         />
         <Card.Content>
           <Text style={styles.sectionTitle}>Sobre mim</Text>
           <Text style={styles.text}>
-            Assistente administrativo na empresa de transporte de valores, e cursando 4 periodo em sistemas para internet (Unicap)
+            Assistente administrativo em uma empresa de transporte de valores e atualmente cursando o 4º período de Sistemas para Internet (Unicap).
           </Text>
 
           <Text style={styles.sectionTitle}>Contato</Text>
-          <Text style={styles.text}>📧 E-mail: (martinsg750@gmail.com)</Text>
-          <Text style={styles.text}>🐙 GitHub: (https://github.com/guicms03)</Text>
-          <Text style={styles.text}>💼 LinkedIn: (Guilherme Martins)</Text>
+          <Text style={styles.text}>📧 E-mail: martinsg750@gmail.com</Text>
+          <Text style={styles.text}>🐙 GitHub: github.com/guicms03</Text>
+          <Text style={styles.text}>💼 LinkedIn: Guilherme Martins</Text>
         </Card.Content>
 
         <Card.Actions style={styles.actions}>
           <Link href="/equipe/guilherme/curriculo" asChild>
-            <Button mode="contained">Ver currículo resumido</Button>
+            <Button mode="contained">Ver currículo</Button>
           </Link>
 
           <Link href="/equipe" asChild>
-            <Button mode="text">Voltar para a equipe</Button>
+            <Button mode="text">Voltar</Button>
           </Link>
         </Card.Actions>
       </Card>
@@ -40,26 +40,26 @@ export default function GuilhermeScreen() {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    padding: 16,
-    paddingTop: 32,
+    padding: 20,
+    paddingTop: 36,
   },
   card: {
-    borderRadius: 12,
+    borderRadius: 14,
   },
   sectionTitle: {
-    marginTop: 12,
-    marginBottom: 4,
+    marginTop: 14,
+    marginBottom: 6,
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: '700',
   },
   text: {
-    marginBottom: 4,
+    marginBottom: 6,
     fontSize: 14,
-    lineHeight: 20,
+    lineHeight: 21,
   },
   actions: {
     justifyContent: 'space-between',
-    paddingHorizontal: 8,
-    paddingBottom: 8,
+    paddingHorizontal: 10,
+    paddingBottom: 10,
   },
 });

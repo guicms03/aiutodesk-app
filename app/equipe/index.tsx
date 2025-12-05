@@ -1,66 +1,95 @@
-import { StyleSheet, ScrollView } from 'react-native';
-import { Link } from 'expo-router';
-import { Card, Text, Avatar } from 'react-native-paper';
-
-const membros = [
-  { nome: 'Alyson Lima', rota: '/equipe/alyson', sigla: 'AL' },
-  { nome: 'Carlos Borba', rota: '/equipe/carlos-borba', sigla: 'CB' },
-  { nome: 'Carlos Leal', rota: '/equipe/carlos-leal', sigla: 'CL' },
-  { nome: 'Daniel Luna', rota: '/equipe/daniel', sigla: 'DL' },
-  { nome: 'Guilherme Martins', rota: '/equipe/guilherme', sigla: 'GM' },
-];
+import React from "react";
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
+import { useRouter } from "expo-router";
+import { AppButton } from "@/components/ui/AppButton";
 
 export default function EquipeScreen() {
+  const router = useRouter();
+
+  const equipe = [
+    { nome: "Alyson Lima", rota: "alyson" },
+    { nome: "Carlos Borba", rota: "carlos-borba" },
+    { nome: "Carlos Leal", rota: "carlos-leal" },
+    { nome: "Daniel Luna", rota: "daniel" },
+    { nome: "Guilherme Martins", rota: "guilherme" },
+  ];
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Nossa Equipe</Text>
-      <Text style={styles.subtitle}>
-        Toque em um integrante para ver perfil e currículo resumido.
-      </Text>
+      <Text style={styles.title}>Nossa equipe</Text>
 
-      {membros.map((membro) => (
-        <Link key={membro.rota} href={membro.rota} asChild>
-          <Card style={styles.card}>
-            <Card.Title
-              title={membro.nome}
-              subtitle="Ver detalhes do integrante"
-              left={(props) => <Avatar.Text {...props} label={membro.sigla} />}
-            />
-          </Card>
-        </Link>
+      {equipe.map((pessoa, index) => (
+        <TouchableOpacity
+          key={index}
+          style={styles.card}
+          onPress={() => router.push(`/equipe/${pessoa.rota}`)}
+        >
+          <View style={styles.avatar}>
+            <Text style={styles.avatarText}>{pessoa.nome[0]}</Text>
+          </View>
+
+          <View style={{ flex: 1 }}>
+            <Text style={styles.nome}>{pessoa.nome}</Text>
+            <Text style={styles.funcao}>Desenvolvedor</Text>
+          </View>
+        </TouchableOpacity>
       ))}
 
-      <Link href="/" asChild>
-        <Text style={styles.backText}>⬅ Voltar para a Home</Text>
-      </Link>
+      <AppButton
+        title="Voltar para Home"
+        onPress={() => router.push("/")}
+        variant="outline"
+        style={{ marginTop: 20 }}
+      />
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flexGrow: 1,
-    padding: 16,
-    paddingTop: 32,
-    gap: 12,
+    padding: 20,
+    backgroundColor: "#F3F4F6",
   },
   title: {
-    fontSize: 26,
-    fontWeight: 'bold',
-    marginBottom: 4,
-  },
-  subtitle: {
-    fontSize: 14,
-    marginBottom: 12,
+    fontSize: 24,
+    fontWeight: "700",
+    marginBottom: 20,
+    textAlign: "center",
+    color: "#111827",
   },
   card: {
-    marginBottom: 8,
-    borderRadius: 12,
+    flexDirection: "row",
+    backgroundColor: "#FFFFFF",
+    padding: 14,
+    borderRadius: 14,
+    marginBottom: 14,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
+    elevation: 2,
   },
-  backText: {
-    marginTop: 24,
-    fontSize: 16,
-    color: '#2563eb',
-    fontWeight: '600',
+  avatar: {
+    width: 52,
+    height: 52,
+    borderRadius: 999,
+    backgroundColor: "#4C1D95",
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: 12,
+  },
+  avatarText: {
+    fontSize: 24,
+    fontWeight: "700",
+    color: "#FFF",
+  },
+  nome: {
+    fontSize: 18,
+    fontWeight: "600",
+    color: "#111827",
+  },
+  funcao: {
+    fontSize: 14,
+    color: "#6B7280",
   },
 });

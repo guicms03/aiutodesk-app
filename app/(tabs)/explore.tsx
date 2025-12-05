@@ -14,12 +14,16 @@ export default function ChamadosScreen() {
   const router = useRouter();
 
   function handleNovoChamado() {
-    // Agora abre a tela de "Novo chamado"
     router.push("/chamado/novo");
   }
 
-  function handleAbrirChamado(chamadoId: number) {
-    router.push(`/chamado/${chamadoId}`);
+  // 👉 Agora usamos o ÍNDICE do array como "id" da rota
+  function handleAbrirChamado(index: number) {
+    router.push(`/chamado/${index}`);
+  }
+
+  function handleVoltarInicio() {
+    router.push("/"); // Tela inicial do (tabs)/index.tsx
   }
 
   function getStatusColor(status: string) {
@@ -47,16 +51,16 @@ export default function ChamadosScreen() {
       <AppButton
         title="Novo chamado"
         onPress={handleNovoChamado}
-        variant="primary"
+        variant="solid"
         style={{ marginBottom: 20 }}
       />
 
-      {chamadosFake.map((chamado) => (
+      {chamadosFake.map((chamado, index) => (
         <TouchableOpacity
-          key={chamado.id}
+          key={index}
           style={styles.card}
           activeOpacity={0.9}
-          onPress={() => handleAbrirChamado(chamado.id)}
+          onPress={() => handleAbrirChamado(index)} // 👉 passa o índice
         >
           <View style={styles.cardHeader}>
             <Text style={styles.cardTitle}>{chamado.titulo}</Text>
@@ -97,7 +101,14 @@ export default function ChamadosScreen() {
         </TouchableOpacity>
       ))}
 
-      <View style={{ height: 24 }} />
+      <View style={{ height: 16 }} />
+
+      <AppButton
+        title="Voltar para início"
+        variant="outline"
+        onPress={handleVoltarInicio}
+        style={{ marginBottom: 24 }}
+      />
     </ScrollView>
   );
 }

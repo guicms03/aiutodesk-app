@@ -19,20 +19,23 @@ export default function NovoChamadoScreen() {
   const [prioridade, setPrioridade] = useState("Média");
 
   function handleSalvar() {
-    // Validação simples
     if (!titulo || !descricao) {
-      // Para não usar Alert, vamos só “destacar” o erro no console por enquanto
       console.warn("Preencha título e descrição antes de salvar.");
       return;
     }
 
-    // Aqui ainda é MOCK: não envia para back-end,
-    // apenas volta para a lista de chamados.
+    // MOCK: só navega para a lista de chamados
     router.push("/explore");
   }
 
   function handleCancelar() {
+    // Volta para a lista de chamados
     router.push("/explore");
+  }
+
+  function handleVoltarInicio() {
+    // Vai direto para o dashboard (Início)
+    router.push("/");
   }
 
   return (
@@ -81,11 +84,14 @@ export default function NovoChamadoScreen() {
           title="Cancelar"
           variant="outline"
           onPress={handleCancelar}
-          style={{
-            marginTop: 8,
-            borderColor: "#4C1D95",
-            backgroundColor: "#F9FAFB",
-          }}
+          style={{ marginTop: 8 }}
+        />
+
+        <AppButton
+          title="Voltar para início"
+          variant="outline"
+          onPress={handleVoltarInicio}
+          style={{ marginTop: 8, marginBottom: 16 }}
         />
       </ScrollView>
     </KeyboardAvoidingView>

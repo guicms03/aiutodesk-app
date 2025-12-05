@@ -14,15 +14,13 @@ export default function GuilhermeScreen() {
         <Card.Content>
           <Text style={styles.sectionTitle}>Sobre mim</Text>
           <Text style={styles.text}>
-            Guilherme Martins é integrante da equipe AIUTODESK, colaborando com
-            ideias, validação de telas e suporte no desenvolvimento das funcionalidades
-            do aplicativo.
+            Assistente administrativo na empresa de transporte de valores, e cursando 4 periodo em sistemas para internet (Unicap)
           </Text>
 
           <Text style={styles.sectionTitle}>Contato</Text>
-          <Text style={styles.text}>📧 E-mail: (e-mail do Guilherme)</Text>
-          <Text style={styles.text}>🐙 GitHub: (GitHub do Guilherme)</Text>
-          <Text style={styles.text}>💼 LinkedIn: (LinkedIn do Guilherme)</Text>
+          <Text style={styles.text}>📧 E-mail: (martinsg750@gmail.com)</Text>
+          <Text style={styles.text}>🐙 GitHub: (https://github.com/guicms03)</Text>
+          <Text style={styles.text}>💼 LinkedIn: (Guilherme Martins)</Text>
         </Card.Content>
 
         <Card.Actions style={styles.actions}>

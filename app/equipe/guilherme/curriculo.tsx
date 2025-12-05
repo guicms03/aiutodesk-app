@@ -8,43 +8,45 @@ export default function CurriculoGuilherme() {
       <Card style={styles.card}>
         <Card.Title
           title="Guilherme Martins"
-          subtitle="Currículo Resumido"
+          subtitle="Desenvolvedor em Formação | Estudante de Ciência da Computação"
           left={(props) => <Avatar.Text {...props} label="GM" />}
         />
 
         <Card.Content>
           <Text style={styles.sectionTitle}>Experiência Profissional</Text>
 
-          <Text style={styles.itemTitle}>Função / Cargo 1</Text>
-          <Text style={styles.subtitle}>Período • Local (preencher)</Text>
+          <Text style={styles.itemTitle}>Projetos Acadêmicos (Spring Boot & PostgreSQL)</Text>
+          <Text style={styles.subtitle}>2024 - 2025 • Unicap</Text>
           <Text style={styles.text}>
-            Adicione aqui uma experiência importante do Guilherme, descrevendo 
-            brevemente suas atividades e responsabilidades.
+            Desenvolvimento de APIs REST utilizando Spring Boot, PostgreSQL e boas práticas de design de software,
+            incluindo princípios SOLID, coesão, acoplamento e padrões de projeto.
           </Text>
 
           <Divider style={styles.divider} />
 
-          <Text style={styles.itemTitle}>Função / Cargo 2</Text>
-          <Text style={styles.subtitle}>Período • Local (preencher)</Text>
+          <Text style={styles.itemTitle}>Aplicativo Mobile (React Native + Expo)</Text>
+          <Text style={styles.subtitle}>2024 - 2025 • Projeto Pessoal</Text>
           <Text style={styles.text}>
-            Outra experiência que ele queira destacar no currículo.
+            Construção de um aplicativo de currículos utilizando React Native, Expo Router, integração com API e
+            gerenciamento de navegação.
           </Text>
 
           <Divider style={styles.divider} />
 
           <Text style={styles.sectionTitle}>Formação Acadêmica</Text>
-          <Text style={styles.itemTitle}>Curso 1 (preencher)</Text>
-          <Text style={styles.subtitle}>Instituição • Período</Text>
 
-          <Text style={styles.itemTitle}>Curso 2 (opcional)</Text>
-          <Text style={styles.subtitle}>Instituição • Período</Text>
+          <Text style={styles.itemTitle}>Ciência da Computação</Text>
+          <Text style={styles.subtitle}>Universidade Católica de Pernambuco • 2023 - Atual</Text>
 
           <Divider style={styles.divider} />
 
           <Text style={styles.sectionTitle}>Tecnologias e Habilidades</Text>
-          <Text style={styles.text}>• Tecnologias que o Guilherme domina</Text>
-          <Text style={styles.text}>• Ferramentas, frameworks, linguagens</Text>
-          <Text style={styles.text}>• Competências adicionais úteis ao projeto</Text>
+          <Text style={styles.text}>• Java, Spring Boot, JPA, PostgreSQL</Text>
+          <Text style={styles.text}>• Node.js, Express, JavaScript, TypeScript</Text>
+          <Text style={styles.text}>• React Native, Expo, React hooks</Text>
+          <Text style={styles.text}>• Git, GitHub (guicms03)</Text>
+          <Text style={styles.text}>• Boas práticas: SOLID, padrões de projeto, organização de código</Text>
+          <Text style={styles.text}>• Resolução de problemas e aprendizado rápido</Text>
         </Card.Content>
 
         <Card.Actions style={styles.actions}>
@@ -60,21 +62,22 @@ export default function CurriculoGuilherme() {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    padding: 16,
-    paddingTop: 24,
+    padding: 18,
+    paddingTop: 28,
   },
   card: {
-    borderRadius: 12,
-    paddingBottom: 12,
+    borderRadius: 14,
+    paddingBottom: 16,
+    elevation: 2,
   },
   sectionTitle: {
-    marginTop: 16,
-    marginBottom: 6,
-    fontSize: 18,
+    marginTop: 18,
+    marginBottom: 8,
+    fontSize: 19,
     fontWeight: '700',
   },
   itemTitle: {
-    fontSize: 15,
+    fontSize: 16,
     fontWeight: '600',
   },
   subtitle: {
@@ -88,15 +91,15 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
   divider: {
-    marginVertical: 12,
+    marginVertical: 14,
   },
   actions: {
-    marginTop: 12,
+    marginTop: 16,
     paddingHorizontal: 16,
   },
   linkVoltar: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#6A1B9A',
+    color: '#7B1FA2',
   },
 });

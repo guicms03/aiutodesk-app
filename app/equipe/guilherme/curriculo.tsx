@@ -8,45 +8,45 @@ export default function CurriculoGuilherme() {
       <Card style={styles.card}>
         <Card.Title
           title="Guilherme Martins"
-          subtitle="Desenvolvedor em Formação | Estudante de Ciência da Computação"
+          subtitle="Desenvolvedor em Formação | Estudante de Sistemas para Internet"
           left={(props) => <Avatar.Text {...props} label="GM" />}
         />
 
         <Card.Content>
           <Text style={styles.sectionTitle}>Experiência Profissional</Text>
 
-          <Text style={styles.itemTitle}>Projetos Acadêmicos (Spring Boot & PostgreSQL)</Text>
+          <Text style={styles.itemTitle}>Projetos Acadêmicos — Spring Boot & PostgreSQL</Text>
           <Text style={styles.subtitle}>2024 - 2025 • Unicap</Text>
           <Text style={styles.text}>
-            Desenvolvimento de APIs REST utilizando Spring Boot, PostgreSQL e boas práticas de design de software,
-            incluindo princípios SOLID, coesão, acoplamento e padrões de projeto.
+            Criação de APIs REST utilizando Spring Boot, PostgreSQL e conceitos essenciais de arquitetura de software,
+            incluindo SOLID, coesão, acoplamento e aplicação de padrões de projeto.
           </Text>
 
           <Divider style={styles.divider} />
 
-          <Text style={styles.itemTitle}>Aplicativo Mobile (React Native + Expo)</Text>
-          <Text style={styles.subtitle}>2024 - 2025 • Projeto Pessoal</Text>
+          <Text style={styles.itemTitle}>Aplicativo Mobile — React Native & Expo</Text>
+          <Text style={styles.subtitle}>2024 - 2025 • Projeto Autônomo</Text>
           <Text style={styles.text}>
-            Construção de um aplicativo de currículos utilizando React Native, Expo Router, integração com API e
-            gerenciamento de navegação.
+            Desenvolvimento de um aplicativo de currículos com React Native, utilizando Expo Router, navegação modular
+            e integração com API externa.
           </Text>
 
           <Divider style={styles.divider} />
 
           <Text style={styles.sectionTitle}>Formação Acadêmica</Text>
 
-          <Text style={styles.itemTitle}>Ciência da Computação</Text>
+          <Text style={styles.itemTitle}>Sistemas para Internet</Text>
           <Text style={styles.subtitle}>Universidade Católica de Pernambuco • 2023 - Atual</Text>
 
           <Divider style={styles.divider} />
 
-          <Text style={styles.sectionTitle}>Tecnologias e Habilidades</Text>
-          <Text style={styles.text}>• Java, Spring Boot, JPA, PostgreSQL</Text>
-          <Text style={styles.text}>• Node.js, Express, JavaScript, TypeScript</Text>
-          <Text style={styles.text}>• React Native, Expo, React hooks</Text>
-          <Text style={styles.text}>• Git, GitHub (guicms03)</Text>
-          <Text style={styles.text}>• Boas práticas: SOLID, padrões de projeto, organização de código</Text>
-          <Text style={styles.text}>• Resolução de problemas e aprendizado rápido</Text>
+          <Text style={styles.sectionTitle}>Tecnologias e Competências</Text>
+          <Text style={styles.text}>• Java, Spring Boot, JPA / Hibernate, PostgreSQL</Text>
+          <Text style={styles.text}>• JavaScript, TypeScript, Node.js com Express</Text>
+          <Text style={styles.text}>• React Native, Expo, navegação e estados</Text>
+          <Text style={styles.text}>• Git e GitHub (@guicms03)</Text>
+          <Text style={styles.text}>• Estruturação limpa de código, SOLID e padrões de arquitetura</Text>
+          <Text style={styles.text}>• Boa comunicação, aprendizado rápido e autonomia</Text>
         </Card.Content>
 
         <Card.Actions style={styles.actions}>
@@ -62,18 +62,18 @@ export default function CurriculoGuilherme() {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    padding: 18,
-    paddingTop: 28,
+    padding: 20,
+    paddingTop: 32,
   },
   card: {
-    borderRadius: 14,
-    paddingBottom: 16,
-    elevation: 2,
+    borderRadius: 16,
+    paddingBottom: 18,
+    elevation: 3,
   },
   sectionTitle: {
-    marginTop: 18,
+    marginTop: 20,
     marginBottom: 8,
-    fontSize: 19,
+    fontSize: 20,
     fontWeight: '700',
   },
   itemTitle: {
@@ -82,24 +82,24 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 13,
-    opacity: 0.7,
+    opacity: 0.75,
     marginBottom: 4,
   },
   text: {
     fontSize: 14,
     marginBottom: 6,
-    lineHeight: 20,
+    lineHeight: 21,
   },
   divider: {
-    marginVertical: 14,
+    marginVertical: 16,
   },
   actions: {
-    marginTop: 16,
+    marginTop: 20,
     paddingHorizontal: 16,
   },
   linkVoltar: {
     fontSize: 16,
-    fontWeight: '600',
-    color: '#7B1FA2',
+    fontWeight: '700',
+    color: '#6A1B9A',
   },
 });

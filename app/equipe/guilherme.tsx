@@ -8,28 +8,29 @@ export default function GuilhermeScreen() {
       <Card style={styles.card}>
         <Card.Title
           title="Guilherme Martins"
-          subtitle="Membro da equipe AIUTODESK"
+          subtitle="Colaborador da equipe AIUTODESK"
           left={(props) => <Avatar.Text {...props} label="GM" />}
         />
+
         <Card.Content>
           <Text style={styles.sectionTitle}>Sobre mim</Text>
           <Text style={styles.text}>
-            Assistente administrativo em uma empresa de transporte de valores e atualmente cursando o 4º período de Sistemas para Internet (Unicap).
+            Trabalho como assistente administrativo em uma empresa de transporte de valores e curso o 4º período de Sistemas para Internet na Unicap.
           </Text>
 
           <Text style={styles.sectionTitle}>Contato</Text>
           <Text style={styles.text}>📧 E-mail: martinsg750@gmail.com</Text>
-          <Text style={styles.text}>🐙 GitHub: github.com/guicms03</Text>
+          <Text style={styles.text}>🐙 GitHub: @guicms03</Text>
           <Text style={styles.text}>💼 LinkedIn: Guilherme Martins</Text>
         </Card.Content>
 
         <Card.Actions style={styles.actions}>
           <Link href="/equipe/guilherme/curriculo" asChild>
-            <Button mode="contained">Ver currículo</Button>
+            <Button mode="contained">Currículo resumido</Button>
           </Link>
 
           <Link href="/equipe" asChild>
-            <Button mode="text">Voltar</Button>
+            <Button mode="text">Voltar à lista</Button>
           </Link>
         </Card.Actions>
       </Card>
@@ -40,26 +41,27 @@ export default function GuilhermeScreen() {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    padding: 20,
-    paddingTop: 36,
+    padding: 22,
+    paddingTop: 40,
   },
   card: {
-    borderRadius: 14,
+    borderRadius: 16,
+    elevation: 2,
   },
   sectionTitle: {
-    marginTop: 14,
+    marginTop: 16,
     marginBottom: 6,
-    fontSize: 16,
+    fontSize: 17,
     fontWeight: '700',
   },
   text: {
     marginBottom: 6,
-    fontSize: 14,
-    lineHeight: 21,
+    fontSize: 15,
+    lineHeight: 22,
   },
   actions: {
     justifyContent: 'space-between',
-    paddingHorizontal: 10,
-    paddingBottom: 10,
+    paddingHorizontal: 12,
+    paddingBottom: 12,
   },
 });

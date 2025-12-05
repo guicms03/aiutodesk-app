@@ -2,6 +2,7 @@
   "expo": {
     "name": "aiutodesk-app",
     "slug": "aiutodesk-app",
+    "owner": "carlosborbab",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -42,7 +43,19 @@
     ],
     "experiments": {
       "typedRoutes": true,
-      "reactCompiler": true
+      "reactCompiler": false
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "34109ef3-436f-4eb0-ab0e-ea7388775fcc"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/34109ef3-436f-4eb0-ab0e-ea7388775fcc"
     }
   }
 }

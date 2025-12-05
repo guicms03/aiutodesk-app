@@ -10,7 +10,7 @@ export default function SobreScreen() {
         <Card.Content>
           <Text style={styles.text}>
             O AIUTODESK é um aplicativo desenvolvido pela equipe para as
-            disciplinas de AOS e PDM, com o objetivo de simular uma plataforma
+            disciplinas de AOS, PDM e PI4, com o objetivo de simular uma plataforma
             moderna de atendimento e organização de demandas.
           </Text>
           <Text style={styles.text}>

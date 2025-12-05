@@ -2,14 +2,13 @@ import { useState } from "react";
 import {
   View,
   Text,
-  TextInput,
-  TouchableOpacity,
   StyleSheet,
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
 import { useRouter } from "expo-router";
 import { useAuth } from "@/store/auth";
+import { TextInput, Button } from "react-native-paper";
 
 export default function LoginScreen() {
   const router = useRouter();
@@ -27,7 +26,7 @@ export default function LoginScreen() {
       return;
     }
 
-    // 🔹 Login FAKE — trocar ao conectar com o backend
+    // LOGIN FAKE POR ENQUANTO
     const fakeToken = "TOKEN_FAKE_AIUTODESK";
     const fakeUser = {
       nome: "Usuário AIUTODESK",
@@ -47,32 +46,53 @@ export default function LoginScreen() {
         <Text style={styles.title}>Bem-vindo ao AIUTODESK</Text>
         <Text style={styles.subtitle}>Faça login para continuar</Text>
 
+        {/* INPUT — EMAIL */}
         <TextInput
-          style={styles.input}
-          placeholder="E-mail"
+          mode="outlined"
+          label="E-mail"
           value={email}
           onChangeText={setEmail}
           autoCapitalize="none"
           keyboardType="email-address"
+          style={styles.input}
+          outlineColor="#aaa"
+          activeOutlineColor="#7C3AED"
         />
 
+        {/* INPUT — SENHA */}
         <TextInput
-          style={styles.input}
-          placeholder="Senha"
+          mode="outlined"
+          label="Senha"
           value={senha}
           onChangeText={setSenha}
           secureTextEntry
+          style={styles.input}
+          outlineColor="#aaa"
+          activeOutlineColor="#7C3AED"
         />
 
+        {/* ERRO */}
         {erro ? <Text style={styles.error}>{erro}</Text> : null}
 
-        <TouchableOpacity style={styles.button} onPress={handleLogin}>
-          <Text style={styles.buttonText}>Entrar</Text>
-        </TouchableOpacity>
+        {/* BOTÃO ENTRAR */}
+        <Button
+          mode="contained"
+          onPress={handleLogin}
+          style={{ marginTop: 16 }}
+          buttonColor="#7C3AED"
+          textColor="#fff"
+        >
+          Entrar
+        </Button>
 
-        <TouchableOpacity onPress={() => router.replace("/signup")}>
-          <Text style={styles.link}>Criar conta</Text>
-        </TouchableOpacity>
+        <Text
+          style={styles.link}
+          onPress={() => {
+            router.push("/signup");
+          }}
+        >
+          Criar conta
+        </Text>
       </View>
     </KeyboardAvoidingView>
   );
@@ -100,34 +120,19 @@ const styles = StyleSheet.create({
     color: "#666",
   },
   input: {
-    backgroundColor: "#fff",
-    padding: 12,
-    borderRadius: 8,
     marginBottom: 12,
-    fontSize: 16,
-  },
-  button: {
-    backgroundColor: "#7C3AED", // ROXO PADRÃO
-    padding: 14,
-    borderRadius: 8,
-    alignItems: "center",
-    marginTop: 10,
-  },
-  buttonText: {
-    color: "#fff",
-    fontSize: 18,
-    fontWeight: "600",
-  },
-  link: {
-    marginTop: 16,
-    textAlign: "center",
-    color: "#7C3AED",
-    fontSize: 16,
+    backgroundColor: "white",
   },
   error: {
     marginTop: 4,
-    marginBottom: 4,
     color: "red",
     textAlign: "center",
+  },
+  link: {
+    marginTop: 20,
+    textAlign: "center",
+    color: "#7C3AED",
+    fontSize: 16,
+    fontWeight: "500",
   },
 });
